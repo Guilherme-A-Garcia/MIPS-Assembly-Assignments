@@ -5,7 +5,7 @@
 .data
 	input: .asciiz "Insira um número positivo: "
 	maior: .asciiz "Maior: "
-	menor: .asciiz "Menor: "
+	menor: .asciiz "\nMenor: "
 	
 .text
 main:
@@ -19,7 +19,7 @@ main:
 	add $t1, $v0, $zero
 	
 	#contador (até 10)
-	add $t5, $t5, 1
+	li $t5, 1
 	
 	# adicionando o n atual (primeiro) ao maior e menor
 	add $t2, $t1, $zero
@@ -39,22 +39,20 @@ loop:
 	
 	add $t5, $t5, 1
 	
-	bgt $t5, 10, fim
 	bgt $t1, $t2, n_maior
 	blt $t1, $t3, n_menor
+	beq $t5, 10, fim
 	add $t5, $t5, 1
 	j loop
 	
 n_maior:
 	add $t2, $t1, $zero
-	add $t5, $t5, 1
-	bgt $t5, 10, fim
+	beq $t5, 10, fim
 	j loop
 
 n_menor:
 	add $t2, $t1, $zero
-	add $t5, $t5, 1
-	bgt $t5, 10, fim
+	beq $t5, 10, fim
 	j loop
 fim:
 	li $v0, 4
