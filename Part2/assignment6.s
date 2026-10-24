@@ -1,7 +1,3 @@
-# Receba 10 números inteiros reais. Verifique e mostre o maior e o menor valor.
-# Obs.: somente valores positivos. Se o número for negativo, deve ser desconsiderado e solicitado
-# novamente.
-
 .data
 	input: .asciiz "Insira um número positivo: "
 	maior: .asciiz "Maior: "
@@ -18,10 +14,8 @@ main:
 	bltz $v0, main
 	add $t1, $v0, $zero
 	
-	#contador (até 10)
 	li $t5, 1
 	
-	# adicionando o n atual (primeiro) ao maior e menor
 	add $t2, $t1, $zero
 	add $t3, $t1, $zero
 	
